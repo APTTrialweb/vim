@@ -295,32 +295,45 @@
         <div class="lg:w-1/2 animate-slide-in-right">
           <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
             <h3 class="text-2xl font-bold text-fuchsia-700 mb-6">Send us a message</h3>
-            <form id="contactForm" class="space-y-4">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input id="name" name="name" type="text" required class="form-input" placeholder="Your full name">
-              </div>
+            <form 
+  id="contactForm" 
+  class="space-y-4"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSfxj1T1BaOxXXMPLuEkq3XXYX8yuiOpxVuDqOsmT2spl_18QA/formResponse"
+  method="POST"
+  target="hidden_iframe"
+  onsubmit="submitted=true;"
+>
 
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input id="email" name="email" type="email" required class="form-input" placeholder="you@example.com">
-              </div>
+  <div>
+    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+    <input id="name" name="entry.507559150" type="text" required class="form-input" placeholder="Your full name">
+  </div>
 
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                <input id="phone" name="phone" type="tel" class="form-input" placeholder="+91 755 ...">
-              </div>
+  <div>
+    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+    <input id="email" name="entry.2139235866" type="email" required class="form-input" placeholder="you@example.com">
+  </div>
 
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                <textarea id="message" name="message" rows="4" class="form-input" placeholder="How can we help?"></textarea>
-              </div>
+  <div>
+    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+    <input id="phone" name="entry.411101092" type="tel" class="form-input" placeholder="+91 755 ...">
+  </div>
 
-              <div class="flex items-center justify-between">
-                <button type="submit" class="px-5 py-2 bg-fuchsia-600 text-white rounded-full font-medium hover:bg-fuchsia-700">Send Message</button>
-                <p id="formStatus" class="text-sm text-gray-600"></p>
-              </div>
-            </form>
+  <div>
+    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+    <textarea id="message" name="entry.811684428" rows="4" class="form-input" placeholder="How can we help?"></textarea>
+  </div>
+
+  <div class="flex items-center justify-between">
+    <button type="submit" class="px-5 py-2 bg-fuchsia-600 text-white rounded-full font-medium hover:bg-fuchsia-700">
+      Send Message
+    </button>
+    <p id="formStatus" class="text-sm text-gray-600">Your message will be submitted securely.</p>
+  </div>
+</form>
+
+<!-- Invisible iframe to prevent page reload -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
           </div>
         </div>
       </div>
