@@ -436,23 +436,18 @@
       try { feather.replace(); } catch (e) { /* ignore */ }
 
       // contact form handling (example - no backend included)
-      const form = document.getElementById('contactForm');
-      const status = document.getElementById('formStatus');
-      form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        // simple front-end validation
-        if (!data.get('name') || !data.get('email')) {
-          status.textContent = 'Please fill required fields.';
-          return;
-        }
-        // Simulate send
-        status.textContent = 'Sending...';
-        setTimeout(() => {
-          status.textContent = 'Message sent — we will contact you soon.';
-          form.reset();
-        }, 900);
-      });
+     document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form?.addEventListener('submit', () => {
+    status.textContent = "Sending...";
+    setTimeout(() => {
+      status.textContent = "Message sent — we'll contact you soon!";
+      form.reset();
+    }, 1200);
+  });
+});
 
       // Smooth scroll for internal anchors
       document.querySelectorAll('a[href^="#"]').forEach(a=>{
