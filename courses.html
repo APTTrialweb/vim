@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Courses | Vidya Sagar Institute</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .hero-grad { background: linear-gradient(90deg, #a21caf, #7c2ae8); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-sm sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-600 to-fuchsia-800 flex items-center justify-center text-white font-bold">VS</div>
+        <a href="index.html" class="text-lg font-semibold text-gray-800">Vidya Sagar Institute</a>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-gray-700">
+        <a href="index.html#about" class="hover:text-fuchsia-700">About</a>
+        <a href="index.html#courses" class="hover:text-fuchsia-700">Courses</a>
+        <a href="index.html#contact" class="hover:text-fuchsia-700">Contact</a>
+      </nav>
+
+      <button id="navToggle" class="md:hidden p-2 rounded-md">
+        <i data-feather="menu"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="index.html#about">About</a>
+        <a href="index.html#courses">Courses</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-grad text-white py-20 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Our Courses</h1>
+    <p class="text-lg md:text-2xl opacity-90 max-w-2xl mx-auto">Explore all programs offered by Vidya Sagar Institute</p>
+  </section>
+
+  <!-- COURSE GRID -->
+  <section class="py-20 max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- B.Com -->
+      <a href="bcom-course-page.html" class="block bg-white shadow hover:shadow-lg rounded-xl p-6 text-center transition">
+        <img src="https://source.unsplash.com/600x400/?commerce,students" class="w-full h-40 object-cover rounded-lg mb-4" alt="B.Com Image">
+        <div class="w-16 h-16 mx-auto mb-4 bg-fuchsia-100 text-fuchsia-700 rounded-full flex items-center justify-center">
+          <i data-feather="book-open"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">B.Com</h3>
+        <p class="text-gray-600 text-sm">Bachelor of Commerce</p>
+      </a>
+
+      <!-- MBA -->
+      <a href="mba-course-page.html" class="block bg-white shadow hover:shadow-lg rounded-xl p-6 text-center transition">
+        <img src="https://source.unsplash.com/600x400/?management,business" class="w-full h-40 object-cover rounded-lg mb-4" alt="MBA Image">
+        <div class="w-16 h-16 mx-auto mb-4 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center">
+          <i data-feather="briefcase"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">MBA</h3>
+        <p class="text-gray-600 text-sm">Master of Business Administration</p>
+      </a>
+
+      <!-- BBA -->
+      <a href="bba-course-page.html" class="block bg-white shadow hover:shadow-lg rounded-xl p-6 text-center transition">
+        <img src="https://source.unsplash.com/600x400/?business,students" class="w-full h-40 object-cover rounded-lg mb-4" alt="BBA Image">
+        <div class="w-16 h-16 mx-auto mb-4 bg-pink-100 text-pink-700 rounded-full flex items-center justify-center">
+          <i data-feather="layers"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">BBA</h3>
+        <p class="text-gray-600 text-sm">Bachelor of Business Administration</p>
+      </a>
+
+      <!-- Diploma -->
+      <a href="diploma-retail-marketing.html" class="block bg-white shadow hover:shadow-lg rounded-xl p-6 text-center transition">
+        <img src="https://source.unsplash.com/600x400/?retail,store" class="w-full h-40 object-cover rounded-lg mb-4" alt="Retail Diploma Image">
+        <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center">
+          <i data-feather="shopping-bag"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Diploma in Retail Marketing</h3>
+        <p class="text-gray-600 text-sm">1-year professional diploma</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-10 text-center">
+    <p class="text-sm opacity-80">&copy; 2025 Vidya Sagar Institute — All Rights Reserved</p>
+  </footer>
+
+  <script>
+    feather.replace();
+    const toggle = document.getElementById("navToggle");
+    const mobile = document.getElementById("mobileMenu");
+    toggle?.addEventListener("click", () => mobile.classList.toggle("hidden"));
+  </script>
+
+</body>
+</html>
