@@ -431,22 +431,29 @@
     customElements.define('custom-footer', CustomFooter);
 
     // Activate feather icons after components are inserted
-    document.addEventListener('DOMContentLoaded', () => {
-      // feather icons
-      try { feather.replace(); } catch (e) { /* ignore */ }
+document.addEventListener('DOMContentLoaded', () => {
+  try { feather.replace(); } catch (e) {}
 
-      // contact form handling (example - no backend included)
-     document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
 
   form?.addEventListener('submit', () => {
-    status.textContent = "Sending...";
+    // Delay matches Google Forms hidden iframe response
     setTimeout(() => {
-      status.textContent = "Message sent — we'll contact you soon!";
+      showSuccessPopup();
       form.reset();
-    }, 1200);
+    }, 800);
   });
+});
+
+// Show popup
+function showSuccessPopup() {
+  document.getElementById('successPopup').classList.remove('hidden');
+}
+
+// Close popup
+function closeSuccessPopup() {
+  document.getElementById('successPopup').classList.add('hidden');
+}
 });
 
       // Smooth scroll for internal anchors
@@ -464,5 +471,33 @@
     // small polyfill for older browsers
     (function(){ if(!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector; })();
   </script>
+  <!-- SUCCESS POPUP -->
+<div id="successPopup"
+     class="fixed inset-0 hidden bg-black/40 backdrop-blur-sm flex items-center justify-center z-[9999]">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-80 text-center animate-popup">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto text-green-500" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 13l4 4L19 7" />
+    </svg>
+
+    <h2 class="text-xl font-semibold mt-4 text-gray-800">Message Sent!</h2>
+    <p class="text-gray-600 text-sm mt-2">We will get back to you shortly.</p>
+
+    <button onclick="closeSuccessPopup()" 
+            class="mt-6 px-5 py-2 bg-fuchsia-600 text-white rounded-full hover:bg-fuchsia-700 transition">
+      Close
+    </button>
+  </div>
+</div>
+
+<style>
+  @keyframes popupFade {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .animate-popup { animation: popupFade .4s ease-out; }
+</style>
+
 </body>
 </html>
