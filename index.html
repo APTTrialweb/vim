@@ -4,110 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vidya Sagar Institute | Bhopal</title>
-  
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Feather Icons -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <style>
     :root { --brand: #203063; --brand-dark: #172447; }
     body { font-family: 'Poppins', sans-serif; }
-
     @keyframes fadeInUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
     .animate-fade-in { animation: fadeInUp .7s ease both; }
     .animate-delay-200 { animation-delay: .2s; }
     .animate-delay-400 { animation-delay: .4s; }
-
     @keyframes popupFade { from { transform:scale(0.9); opacity:0;} to { transform:scale(1); opacity:1;} }
     .animate-popup { animation: popupFade .4s ease-out; }
-
-    .person-left,
-    .person-right {
-      position:absolute;
-      top:36px;
-      z-index:5;
-      width:160px;
-      pointer-events:none;
-    }
+    .person-left, .person-right { position:absolute; top:36px; z-index:5; width:160px; pointer-events:none; }
     .person-left { left:18px; }
     .person-right { right:18px; transform:scaleX(-1); }
-    @media (max-width:768px){
-      .person-left,.person-right{ width:110px; top:20px; }
-    }
+    @media (max-width:768px){ .person-left,.person-right{ width:110px; top:20px; } }
+    .form-input { border: 1px solid rgba(0,0,0,.08); padding:.7rem 1rem; border-radius:999px; }
+    .form-input:focus, .form-input:hover { box-shadow:0 6px 24px rgba(32,48,99,0.12); }
 
-    .form-input { border: 1px solid rgba(0,0,0,.08); padding: .7rem 1rem; border-radius: 999px; }
-    .form-input:focus, .form-input:hover { box-shadow: 0 6px 24px rgba(32,48,99,0.12); }
-
-    /* MOBILE FIXES */
-
-    /* Navbar */
     @media (max-width:640px){
       .nav-wrapper{flex-direction:column; gap:10px; text-align:center;}
-      .nav-wrapper a{display:block;}
-    }
-
-    /* About section image */
-    @media (max-width:640px){
-      .about-img{height:220px !important;}
-    }
-
-    /* Courses grid */
-    @media (max-width:640px){
+      .about-img{height:220px!important;}
       .course-card{margin-bottom:20px;}
-    }
-
-    /* Contact form improvements */
-    @media (max-width:640px){
-      #contactForm input, #contactForm textarea{
-        font-size:16px;
-      }
-    }
-
-    /* Poster responsive */
-    @media (max-width:640px){
-      .poster-img{
-        max-height:160px !important;
-        object-fit:contain;
-      }
-    }
-
-    /* Hero height fix on phones */
-    @media (max-width:640px){
-      .hero{
-        height:85vh !important;
-        padding-top:120px;
-      }
+      #contactForm input, #contactForm textarea{ font-size:16px; }
+      .poster-img{ max-height:160px!important; object-fit:contain; }
+      .hero{ height:85vh!important; padding-top:120px; }
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- NAV INSIDE HERO -->
+<!-- NAV BAR -->
 <div class="w-full text-[var(--brand)] absolute top-0 left-0 z-20 py-3">
   <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 text-lg font-medium px-4 nav-wrapper">
     <div class="flex items-center gap-3 mr-6">
       <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#203063] font-bold" style="background:linear-gradient(90deg,var(--brand),var(--brand-dark));">VS</div>
       <span class="text-xl font-semibold text-[#203063]">Vidya Sagar Institute</span>
     </div>
-
     <a href="#about" class="hover:text-[#172447] text-[#203063]">About</a>
     <a href="#courses" class="hover:text-[#172447] text-[#203063]">Courses</a>
     <a href="#contact" class="hover:text-[#172447] text-[#203063]">Contact</a>
-
     <a href="https://apttrialweb.github.io/vim/courses.html" class="ml-4 px-4 py-2 bg-white text-[var(--brand)] rounded-full font-semibold hover:bg-gray-200">Apply Now</a>
   </div>
 </div>
 
 <!-- TOP POSTER -->
 <div class="w-full bg-transparent">
-  <img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" alt="Poster" class="w-full object-contain mx-auto poster-img" style="max-height:260px; display:block;" />
+  <img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" class="w-full object-contain mx-auto poster-img" style="max-height:260px; display:block;" />
 </div>
 
 <!-- HERO -->
@@ -120,7 +67,8 @@
     <p class="text-lg md:text-2xl mb-8 animate-fade-in animate-delay-200">Empowering Minds, Shaping Futures in Bhopal</p>
     <div class="flex justify-center gap-4 animate-fade-in animate-delay-400 flex-wrap">
       <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-white text-[var(--brand)] rounded-full font-semibold hover:bg-gray-100">Explore Courses</a>
-      <a href="#contact" class="px-6 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-[var(--brand)]">Contact Us</a>
+      <button id="openBrochurePopup" class="px-6 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-[var(--brand)]">Get MBA Brochure</button>
+    
     </div>
   </div>
 </section>
@@ -128,12 +76,10 @@
 <!-- ABOUT -->
 <section id="about" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
     <div class="animate-fade-in">
       <h2 class="text-3xl font-bold text-[var(--brand)] mb-4">About Our Institute</h2>
       <p class="text-gray-700 mb-4">Vidya Sagar Institute, established in 1995, has been a beacon of quality education in Bhopal.</p>
       <p class="text-gray-700 mb-6">State-of-the-art campus, experienced faculty, and innovative learning methods.</p>
-
       <div class="flex gap-6 flex-wrap">
         <div class="flex items-center gap-2">
           <div class="w-10 h-10 bg-[var(--brand)]/10 flex items-center justify-center rounded-full"><i data-feather="award" class="text-[var(--brand)]"></i></div>
@@ -147,9 +93,158 @@
     </div>
 
     <div class="animate-fade-in animate-delay-200">
-      <img src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp-Image-2025-09-18-at-13.54.25.webp?raw=true" class="rounded-xl shadow-xl object-cover w-full h-80 about-img" alt="campus" />
+      <img src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp-Image-2025-09-18-at-13.54.25.webp?raw=true" class="rounded-xl shadow-xl object-cover w-full h-80 about-img" />
     </div>
+  </div>
+</section>
 
+<!-- ACTIVITY GALLERY -->
+<section class="py-20 bg-[var(--brand)] text-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Our Activities</h2>
+
+    <div id="activitySlider" class="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl touch-pan-y">
+      <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
+        <img src="https://source.unsplash.com/600x400/?education,classroom" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Classroom learning in progress</p>
+      </div>
+      <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
+        <img src="https://source.unsplash.com/600x400/?students,learning" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Students participating in activities</p>
+      </div>
+      <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
+        <img src="https://source.unsplash.com/600x400/?college,event" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Campus event highlights</p>
+      </div>
+      <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
+        <img src="https://source.unsplash.com/600x400/?lecture,hall" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Lecture session</p>
+      </div>
+      <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
+        <img src="https://source.unsplash.com/600x400/?students,project" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Student group project</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+let sliderIndex = 0;
+const slides = document.querySelectorAll('#activitySlider .slide');
+function showNextSlide() {
+  slides.forEach(s => s.classList.add('hidden'));
+  slides[sliderIndex].classList.remove('hidden');
+  sliderIndex = (sliderIndex + 1) % slides.length;
+}
+showNextSlide();
+let interval = setInterval(showNextSlide, 4000);
+
+// Swipe Support
+let startX = 0;
+let endX = 0;
+const slider = document.getElementById('activitySlider');
+
+slider.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  clearInterval(interval);
+});
+
+slider.addEventListener('touchmove', e => {
+  endX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchend', () => {
+  const diff = startX - endX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      showNextSlide();
+    } else {
+      sliderIndex = (sliderIndex - 2 + slides.length) % slides.length;
+      showNextSlide();
+    }
+  }
+  interval = setInterval(showNextSlide, 4000);
+});
+</script>
+
+<!-- ANIMATED STATISTICS -->
+<section class="py-20 bg-white text-center">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="text-[var(--brand)]">
+      <h3 class="text-4xl font-extrabold counter" data-target="25">0</h3>
+      <p class="text-gray-600 mt-2">Years of Excellence</p>
+    </div>
+    <div class="text-[var(--brand)]">
+      <h3 class="text-4xl font-extrabold counter" data-target="5000">0</h3>
+      <p class="text-gray-600 mt-2">Alumni</p>
+    </div>
+    <div class="text-[var(--brand)]">
+      <h3 class="text-4xl font-extrabold counter" data-target="20">0</h3>
+      <p class="text-gray-600 mt-2">Programs</p>
+    </div>
+    <div class="text-[var(--brand)]">
+      <h3 class="text-4xl font-extrabold counter" data-target="95">0</h3>
+      <p class="text-gray-600 mt-2">Satisfaction %</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-[var(--brand)] mb-10">Why Choose Us?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-xl transition">
+        <i data-feather="shield" class="w-12 h-12 text-[var(--brand)] mx-auto mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">25+ Years Experience</h3>
+        <p class="text-gray-600">Trusted education legacy since 1995.</p>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-xl transition">
+        <i data-feather="users" class="w-12 h-12 text-[var(--brand)] mx-auto mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Experienced Faculty</h3>
+        <p class="text-gray-600">Highly qualified teachers & mentors.</p>
+      </div>
+      <div class="bg-gray-50 p-8 rounded-2xl shadow hover:shadow-xl transition">
+        <i data-feather="award" class="w-12 h-12 text-[var(--brand)] mx-auto mb-4"></i>
+        <h3 class="font-bold text-xl mb-2">Proven Results</h3>
+        <p class="text-gray-600">5000+ successful alumni across India.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE COMPARISON TABLE -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-[var(--brand)] mb-8">Course Comparison</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white shadow rounded-xl">
+        <tr class="bg-[var(--brand)] text-white">
+          <th class="p-4">Course</th>
+          <th class="p-4">Duration</th>
+          <th class="p-4">Eligibility</th>
+          <th class="p-4">Highlights</th>
+        </tr>
+        <tr>
+          <td class="p-4 font-semibold">BBA</td>
+          <td class="p-4">3 Years</td>
+          <td class="p-4">12th Pass</td>
+          <td class="p-4">Business, Management, Internships</td>
+        </tr>
+        <tr class="bg-gray-100">
+          <td class="p-4 font-semibold">B.Com CA</td>
+          <td class="p-4">3 Years</td>
+          <td class="p-4">12th Pass</td>
+          <td class="p-4">Commerce + Computer Applications</td>
+        </tr>
+        <tr>
+          <td class="p-4 font-semibold">MBA</td>
+          <td class="p-4">2 Years</td>
+          <td class="p-4">Graduation</td>
+          <td class="p-4">Leadership, Finance, HR, Marketing</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </section>
 
@@ -158,9 +253,7 @@
   <div class="max-w-7xl mx-auto px-6">
     <h2 class="text-3xl font-bold text-center text-[var(--brand)] mb-3">Our Courses</h2>
     <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Programs designed to prepare students for successful careers.</p>
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
       <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in course-card">
         <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="book" class="w-16 h-16 text-white"></i>
@@ -190,7 +283,6 @@
           <p class="text-gray-600 mb-4">Includes accounting, finance, and business studies.</p>
         </div>
       </div>
-
     </div>
 
     <div class="text-center mt-10">
@@ -210,36 +302,49 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1545996124-1f59b5f8c6d1?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1545996124-1f59b5f8c6d1?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
             <h4 class="font-bold">Rahul Sharma</h4>
             <p class="text-sm opacity-80">B.Sc Physics, 2019</p>
           </div>
         </div>
-        <p class="opacity-90">"The faculty at Vidya Sagar Institute goes above and beyond to ensure students understand concepts thoroughly. The practical lab sessions were particularly helpful for my career."</p>
+        <p class="opacity-90">"The faculty at Vidya Sagar Institute goes above and beyond to ensure students understand concepts thoroughly."</p>
       </div>
 
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
             <h4 class="font-bold">Priya Patel</h4>
             <p class="text-sm opacity-80">B.Com, 2020</p>
           </div>
         </div>
-        <p class="opacity-90">"The commerce program provided excellent industry exposure through guest lectures and workshops. I secured my first job through campus placements."</p>
+        <p class="opacity-90">"The commerce program provided excellent industry exposure. I secured my first job through campus placements."</p>
       </div>
 
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
             <h4 class="font-bold">Amit Verma</h4>
             <p class="text-sm opacity-80">B.A English, 2018</p>
           </div>
         </div>
-        <p class="opacity-90">"The liberal arts environment encouraged critical thinking and creativity. The library resources were exceptional for research projects."</p>
+        <p class="opacity-90">"The liberal arts environment encouraged critical thinking and creativity."</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-[var(--brand)] mb-6">Campus Tour</h2>
+    <p class="text-gray-600 mb-6">Take a quick look at our institute environment</p>
+    <div class="rounded-2xl overflow-hidden shadow-xl">
+      <video autoplay muted loop class="w-full h-80 object-cover">
+        <source src="https://cdn.pixabay.com/vimeo/458857393/campustour.mp4?width=1280&hash=example" type="video/mp4" />
+      </video>
     </div>
   </div>
 </section>
@@ -247,7 +352,6 @@
 <!-- CONTACT -->
 <section id="contact" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-
     <div>
       <h2 class="text-3xl font-bold text-[var(--brand)] mb-4">Contact Us</h2>
       <p class="text-gray-600 mb-6">We’re here to help! Reach out anytime.</p>
@@ -307,9 +411,62 @@
   </div>
 </section>
 
+
+
+
+
+<!-- FAQ Section -->
+<section class="py-20 bg-gray-100">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-[var(--brand)] mb-6 text-center">Frequently Asked Questions</h2>
+
+    <div class="space-y-4">
+      <details class="bg-white p-4 rounded-xl shadow">
+        <summary class="font-semibold cursor-pointer">What is the eligibility for admission?</summary>
+        <p class="mt-2 text-gray-600">Students must have passed Class 12 from a recognized board.</p>
+      </details>
+
+      <details class="bg-white p-4 rounded-xl shadow">
+        <summary class="font-semibold cursor-pointer">Is there placement assistance?</summary>
+        <p class="mt-2 text-gray-600">Yes, we provide full placement support.</p>
+      </details>
+
+      <details class="bg-white p-4 rounded-xl shadow">
+        <summary class="font-semibold cursor-pointer">Do you offer scholarships?</summary>
+        <p class="mt-2 text-gray-600">Yes, merit-based scholarships are available.</p>
+      </details>
+
+      <details class="bg-white p-4 rounded-xl shadow">
+        <summary class="font-semibold cursor-pointer">How to apply?</summary>
+        <p class="mt-2 text-gray-600">You can apply online using the Apply Now button on the website.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
-<footer class="bg-[var(--brand)] text-white py-10 mt-16 text-center">
-  <p>&copy; 2025 Vidya Sagar Institute — All Rights Reserved</p>
+<footer class="bg-[var(--brand-dark)] text-white py-14 mt-16">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+    <div>
+      <h3 class="font-bold text-lg mb-3">Contact</h3>
+      <p>Bhopal, Madhya Pradesh</p>
+      <p>support@vidyasagarbhopal.in</p>
+      <p>+91 7552621723</p>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg mb-3">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#about" class="hover:underline">About</a></li>
+        <li><a href="#courses" class="hover:underline">Courses</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold text-lg mb-3">Follow Us</h3>
+      <p>Instagram | Facebook | YouTube</p>
+    </div>
+  </div>
+  <p class="text-center mt-10 opacity-70">© 2025 Vidya Sagar Institute — All Rights Reserved</p>
 </footer>
 
 <!-- SUCCESS POPUP -->
@@ -322,6 +479,17 @@
   </div>
 </div>
 
+<!-- BROCHURE POPUP -->
+<div id="brochurePopup" class="fixed inset-0 hidden bg-black/50 backdrop-blur-sm flex items-center justify-center z-[99999]">
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-96 text-center animate-popup">
+    <img src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2016.00.35_22a7122b.jpg?raw=true" class="w-full h-64 object-cover rounded-xl mb-4" />
+    <h2 class="text-2xl font-bold text-[var(--brand)]">APT MBA Program</h2>
+    <p class="text-gray-600 mt-2 mb-4">Download our free brochure now!</p>
+    <a href="https://apttrialweb.github.io/brochure/APT-MBA-Brochure.pdf" class="px-6 py-3 bg-[var(--brand)] text-white rounded-full block font-semibold hover:bg-[var(--brand-dark)] mb-3">Download Brochure</a>
+    <button id="closeBrochurePopup" class="px-6 py-2 bg-gray-300 rounded-full hover:bg-gray-400">Close</button>
+  </div>
+</div>
+
 <script>
 window.addEventListener('DOMContentLoaded', () => {
   try { feather.replace(); } catch (e) {}
@@ -331,17 +499,65 @@ window.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('closePopupBtn');
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', () => {
       setTimeout(() => {
-        if (successPopup) successPopup.classList.remove('hidden');
+        successPopup.classList.remove('hidden');
         form.reset();
       }, 800);
     });
   }
 
-  if (closeBtn && successPopup) {
-    closeBtn.addEventListener('click', () => successPopup.classList.add('hidden'));
-  }
+  if (closeBtn) closeBtn.addEventListener('click', () => successPopup.classList.add('hidden'));
+
+  const brochurePopup = document.getElementById('brochurePopup');
+  const openBrochurePopup = document.getElementById('openBrochurePopup');
+  const closeBrochurePopup = document.getElementById('closeBrochurePopup');
+
+  // Scroll-triggered popup at 30%
+  let brochureShown = false;
+  window.addEventListener('scroll', () => {
+    const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+    if (!brochureShown && scrollPercent > 50) {
+      brochurePopup.classList.remove('hidden');
+      brochureShown = true;
+    }
+  });
+
+  openBrochurePopup.addEventListener('click', () => brochurePopup.classList.remove('hidden'));
+  closeBrochurePopup.addEventListener('click', () => brochurePopup.classList.add('hidden'));
+});
+</script>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:+917552621723" class="fixed bottom-6 right-6 z-[9999] bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl animate-pulse hover:scale-110 transition">
+  <i data-feather="phone"></i>
+</a>
+
+<script>
+// Smooth Scroll Animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('opacity-100','translate-y-0');
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('section, .course-card, .slide').forEach(el => {
+  el.classList.add('opacity-0','translate-y-6','transition','duration-700');
+  observer.observe(el);
+});
+
+// Animated Counters
+const counters=document.querySelectorAll('.counter');
+const speed=50;
+counters.forEach(counter=>{
+  const update=()=>{
+    const target=+counter.getAttribute('data-target');
+    const count=+counter.innerText;
+    const inc=target/speed;
+    if(count<target){ counter.innerText=Math.ceil(count+inc); setTimeout(update,40);} 
+    else counter.innerText=target;
+  };
+  update();
 });
 </script>
 
