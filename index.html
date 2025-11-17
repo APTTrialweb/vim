@@ -4,17 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vidya Sagar Institute | Bhopal</title>
-
+  
   <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com">// Scroll reveal animations
-const revealEls = document.querySelectorAll('.animate-fade-in');
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
-  });
-},{threshold:0.15});
-revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20px)'; observer.observe(el); });
-</script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +28,6 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
     @keyframes popupFade { from { transform:scale(0.9); opacity:0;} to { transform:scale(1); opacity:1;} }
     .animate-popup { animation: popupFade .4s ease-out; }
 
-    /* Person images inside hero (single instance placement) */
     .person-left,
     .person-right {
       position:absolute;
@@ -51,16 +42,56 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
       .person-left,.person-right{ width:110px; top:20px; }
     }
 
-    /* Make form inputs look broad and glow on focus/hover */
     .form-input { border: 1px solid rgba(0,0,0,.08); padding: .7rem 1rem; border-radius: 999px; }
     .form-input:focus, .form-input:hover { box-shadow: 0 6px 24px rgba(32,48,99,0.12); }
+
+    /* MOBILE FIXES */
+
+    /* Navbar */
+    @media (max-width:640px){
+      .nav-wrapper{flex-direction:column; gap:10px; text-align:center;}
+      .nav-wrapper a{display:block;}
+    }
+
+    /* About section image */
+    @media (max-width:640px){
+      .about-img{height:220px !important;}
+    }
+
+    /* Courses grid */
+    @media (max-width:640px){
+      .course-card{margin-bottom:20px;}
+    }
+
+    /* Contact form improvements */
+    @media (max-width:640px){
+      #contactForm input, #contactForm textarea{
+        font-size:16px;
+      }
+    }
+
+    /* Poster responsive */
+    @media (max-width:640px){
+      .poster-img{
+        max-height:160px !important;
+        object-fit:contain;
+      }
+    }
+
+    /* Hero height fix on phones */
+    @media (max-width:640px){
+      .hero{
+        height:85vh !important;
+        padding-top:120px;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- NAV INSIDE HERO (Centered row) -->
+<!-- NAV INSIDE HERO -->
 <div class="w-full text-[var(--brand)] absolute top-0 left-0 z-20 py-3">
-  <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 text-lg font-medium px-4">
+  <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 text-lg font-medium px-4 nav-wrapper">
     <div class="flex items-center gap-3 mr-6">
       <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#203063] font-bold" style="background:linear-gradient(90deg,var(--brand),var(--brand-dark));">VS</div>
       <span class="text-xl font-semibold text-[#203063]">Vidya Sagar Institute</span>
@@ -74,22 +105,20 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
   </div>
 </div>
 
-<!-- TOP POSTER (full-width image placed above hero) -->
+<!-- TOP POSTER -->
 <div class="w-full bg-transparent">
-  <img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" alt="Poster" class="w-full object-contain mx-auto" style="max-height:260px; display:block;" />
+  <img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" alt="Poster" class="w-full object-contain mx-auto poster-img" style="max-height:260px; display:block;" />
 </div>
 
-
-
 <!-- HERO -->
-<section class="relative h-screen flex items-center justify-center text-white overflow-hidden bg-contain bg-top" style="background-image:url('https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png'); background-repeat:no-repeat; background-position:top; background-size:cover;">
+<section class="relative h-screen hero flex items-center justify-center text-white overflow-hidden bg-contain bg-top" style="background-image:url('https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png'); background-repeat:no-repeat; background-position:top; background-size:cover;">
   <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(32,48,99,0.85), rgba(32,48,99,0.9));"></div>
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.45)_100%)] pointer-events-none"></div>
 
   <div class="max-w-3xl mx-auto px-6 z-30 text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Vidya Sagar Institute</h1>
     <p class="text-lg md:text-2xl mb-8 animate-fade-in animate-delay-200">Empowering Minds, Shaping Futures in Bhopal</p>
-    <div class="flex justify-center gap-4 animate-fade-in animate-delay-400">
+    <div class="flex justify-center gap-4 animate-fade-in animate-delay-400 flex-wrap">
       <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-white text-[var(--brand)] rounded-full font-semibold hover:bg-gray-100">Explore Courses</a>
       <a href="#contact" class="px-6 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-[var(--brand)]">Contact Us</a>
     </div>
@@ -105,7 +134,7 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
       <p class="text-gray-700 mb-4">Vidya Sagar Institute, established in 1995, has been a beacon of quality education in Bhopal.</p>
       <p class="text-gray-700 mb-6">State-of-the-art campus, experienced faculty, and innovative learning methods.</p>
 
-      <div class="flex gap-6">
+      <div class="flex gap-6 flex-wrap">
         <div class="flex items-center gap-2">
           <div class="w-10 h-10 bg-[var(--brand)]/10 flex items-center justify-center rounded-full"><i data-feather="award" class="text-[var(--brand)]"></i></div>
           <span class="font-medium">25+ Years</span>
@@ -118,7 +147,7 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
     </div>
 
     <div class="animate-fade-in animate-delay-200">
-      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400" class="rounded-xl shadow-xl object-cover w-full h-80" alt="campus" />
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400" class="rounded-xl shadow-xl object-cover w-full h-80 about-img" alt="campus" />
     </div>
 
   </div>
@@ -132,7 +161,7 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in">
+      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in course-card">
         <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="book" class="w-16 h-16 text-white"></i>
         </div>
@@ -142,7 +171,7 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
         </div>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-200">
+      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-200 course-card">
         <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="cpu" class="w-16 h-16 text-white"></i>
         </div>
@@ -152,7 +181,7 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
         </div>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-400">
+      <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-400 course-card">
         <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="dollar-sign" class="w-16 h-16 text-white"></i>
         </div>
@@ -244,50 +273,36 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
     <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
       <h3 class="text-2xl font-bold text-[var(--brand)] mb-6">Send Us a Message</h3>
 
-<!-- New Stylish Form Layout -->
-<form 
-  id="contactForm" 
-  class="space-y-5"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSfxj1T1BaOxXXMPLuEkq3XXYX8yuiOpxVuDqOsmT2spl_18QA/formResponse"
-  method="POST"
-  target="hidden_iframe"
-  onsubmit="submitted=true;"
->
-  <!-- Row 1: Name + Email -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="text-sm font-medium text-gray-700">Full Name</label>
-      <input name="entry.507559150" type="text" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="Your full name" />
-    </div>
+      <form id="contactForm" class="space-y-5" action="https://docs.google.com/forms/d/e/1FAIpQLSfxj1T1BaOxXXMPLuEkq3XXYX8yuiOpxVuDqOsmT2spl_18QA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-medium text-gray-700">Full Name</label>
+            <input name="entry.507559150" type="text" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="Your full name" />
+          </div>
 
-    <div>
-      <label class="text-sm font-medium text-gray-700">Email</label>
-      <input name="entry.2139235866" type="email" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="you@example.com" />
-    </div>
-  </div>
+          <div>
+            <label class="text-sm font-medium text-gray-700">Email</label>
+            <input name="entry.2139235866" type="email" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="you@example.com" />
+          </div>
+        </div>
 
-  <!-- Row 2: Phone -->
-  <div>
-    <label class="text-sm font-medium text-gray-700">Phone</label>
-    <input name="entry.411101092" type="tel" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="+91 755 ..." />
-  </div>
+        <div>
+          <label class="text-sm font-medium text-gray-700">Phone</label>
+          <input name="entry.411101092" type="tel" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="+91 755 ..." />
+        </div>
 
-  <!-- Row 3: Message -->
-  <div>
-    <label class="text-sm font-medium text-gray-700">Message</label>
-    <textarea name="entry.811684428" rows="4" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="How can we help?"></textarea>
-  </div>
+        <div>
+          <label class="text-sm font-medium text-gray-700">Message</label>
+          <textarea name="entry.811684428" rows="4" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="How can we help?"></textarea>
+        </div>
 
-  <!-- Submit Section -->
-  <div class="flex items-center justify-between pt-2">
-    <button type="submit" class="px-6 py-2 bg-[var(--brand)] text-white rounded-full font-medium hover:bg-[var(--brand)] transition-all shadow-md">Send Message</button>
-    <p class="text-sm text-gray-600">We reply within 24 hours.</p>
-  </div>
-</form>
+        <div class="flex items-center justify-between pt-2">
+          <button type="submit" class="px-6 py-2 bg-[var(--brand)] text-white rounded-full font-medium hover:bg-[var(--brand)] transition-all shadow-md">Send Message</button>
+          <p class="text-sm text-gray-600">We reply within 24 hours.</p>
+        </div>
+      </form>
 
-<!-- Hidden iframe -->
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
     </div>
   </div>
 </section>
@@ -308,27 +323,15 @@ revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20p
 </div>
 
 <script>
-// Initialize icons safely
 window.addEventListener('DOMContentLoaded', () => {
-  try { feather.replace(); } catch (e) { /* ignore */ }
+  try { feather.replace(); } catch (e) {}
 
-  // Mobile nav toggle (if navToggle exists) - guarded
-  const navToggle = document.getElementById('navToggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (mobileMenu) mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  // Contact form handling with safety checks
   const form = document.getElementById('contactForm');
   const successPopup = document.getElementById('successPopup');
   const closeBtn = document.getElementById('closePopupBtn');
 
   if (form) {
     form.addEventListener('submit', (e) => {
-      // let the form submit to Google Forms via the iframe; show popup after a short delay
       setTimeout(() => {
         if (successPopup) successPopup.classList.remove('hidden');
         form.reset();
