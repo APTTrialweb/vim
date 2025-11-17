@@ -6,7 +6,15 @@
   <title>Vidya Sagar Institute | Bhopal</title>
 
   <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com">// Scroll reveal animations
+const revealEls = document.querySelectorAll('.animate-fade-in');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; }
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(20px)'; observer.observe(el); });
+</script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +25,7 @@
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <style>
-    :root { --brand: #A21CAF; --brand-dark: #7a158a; }
+    :root { --brand: #203063; --brand-dark: #172447; }
     body { font-family: 'Poppins', sans-serif; }
 
     @keyframes fadeInUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
@@ -27,74 +35,63 @@
 
     @keyframes popupFade { from { transform:scale(0.9); opacity:0;} to { transform:scale(1); opacity:1;} }
     .animate-popup { animation: popupFade .4s ease-out; }
+
+    /* Person images inside hero (single instance placement) */
+    .person-left,
+    .person-right {
+      position:absolute;
+      top:36px;
+      z-index:5;
+      width:160px;
+      pointer-events:none;
+    }
+    .person-left { left:18px; }
+    .person-right { right:18px; transform:scaleX(-1); }
+    @media (max-width:768px){
+      .person-left,.person-right{ width:110px; top:20px; }
+    }
+
+    /* Make form inputs look broad and glow on focus/hover */
+    .form-input { border: 1px solid rgba(0,0,0,.08); padding: .7rem 1rem; border-radius: 999px; }
+    .form-input:focus, .form-input:hover { box-shadow: 0 6px 24px rgba(32,48,99,0.12); }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- NAVBAR -->
-<header class="bg-white shadow-sm sticky top-0 z-50 bg-cover bg-top" style="height:120px; display:flex; align-items:flex-end;">
-  <div class="max-w-7xl mx-auto px-6 pb-3 flex items-center justify-between bg-white/80 backdrop-blur-md rounded-t-2xl">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-600 to-fuchsia-800 flex items-center justify-center text-white font-bold">VS</div>
-      <div>
-        <a href="#" class="text-lg font-semibold text-gray-800">Vidya Sagar Institute</a>
-        <p class="text-xs text-gray-500 -mt-1">Bhopal</p>
-      </div>
+<!-- NAV INSIDE HERO (Centered row) -->
+<div class="w-full text-[var(--brand)] absolute top-0 left-0 z-20 py-3">
+  <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 text-lg font-medium px-4">
+    <div class="flex items-center gap-3 mr-6">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center text-[#203063] font-bold" style="background:linear-gradient(90deg,var(--brand),var(--brand-dark));">VS</div>
+      <span class="text-xl font-semibold text-[#203063]">Vidya Sagar Institute</span>
     </div>
 
-    <nav class="hidden md:flex items-center gap-6 text-gray-700 font-medium">
-      <a href="#about" class="hover:text-fuchsia-700">About</a>
-      <a href="#courses" class="hover:text-fuchsia-700">Courses</a>
-      <a href="#contact" class="hover:text-fuchsia-700">Contact</a>
-      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-4 py-2 bg-fuchsia-600 text-white rounded-full hover:bg-fuchsia-700">Apply Now</a>
-    </nav>
+    <a href="#about" class="hover:text-[#172447] text-[#203063]">About</a>
+    <a href="#courses" class="hover:text-[#172447] text-[#203063]">Courses</a>
+    <a href="#contact" class="hover:text-[#172447] text-[#203063]">Contact</a>
 
-    <button id="navToggle" class="md:hidden p-2 rounded-md">
-      <i data-feather="menu"></i>
-    </button>
+    <a href="https://apttrialweb.github.io/vim/courses.html" class="ml-4 px-4 py-2 bg-white text-[var(--brand)] rounded-full font-semibold hover:bg-gray-200">Apply Now</a>
   </div>
+</div>
 
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
-    <div class="px-6 py-4 flex flex-col gap-3 text-gray-700">
-      <a href="#about">About</a>
-      <a href="#courses">Courses</a>
-      <a href="#contact">Contact</a>
-      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-4 py-2 bg-fuchsia-600 text-white rounded-full text-center">Apply Now</a>
-    </div>
-  </div>
-</header>
+<!-- TOP POSTER (full-width image placed above hero) -->
+<div class="w-full bg-transparent">
+  <img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" alt="Poster" class="w-full object-contain mx-auto" style="max-height:260px; display:block;" />
+</div>
+
+
 
 <!-- HERO -->
+<section class="relative h-screen flex items-center justify-center text-white overflow-hidden bg-contain bg-top" style="background-image:url('https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png'); background-repeat:no-repeat; background-position:top; background-size:cover;">
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(32,48,99,0.85), rgba(32,48,99,0.9));"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.45)_100%)] pointer-events-none"></div>
 
-<!-- TWO PEOPLE (ONLY ONCE) -->
-<style>
-.person-left,
-.person-right {
-  position:absolute;
-  top:80px;
-  z-index:5;
-  width:180px;
-  pointer-events:none;
-}
-.person-left { left:20px; }
-.person-right { right:20px; transform:scaleX(-1); }
-@media (max-width:768px){
-  .person-left,.person-right{ width:120px; top:110px; }
-}
-</style>
-
-<img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" class="person-left" />
-<img src="https://raw.githubusercontent.com/APTTrialweb/vim/main/Maharaj%20ji%20for%20WEB0.png" class="person-right" />
-
-<section class="relative h-screen flex items-center justify-center text-white overflow-hidden bg-cover bg-center bg-fixed" style="background-image:url('https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2014.15.05_1ebbca76.jpg?raw=true'); background-size:cover; background-position:center;">
-  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] pointer-events-none"></div>
-  <div class="max-w-3xl mx-auto px-6 z-10 text-center">
+  <div class="max-w-3xl mx-auto px-6 z-30 text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Vidya Sagar Institute</h1>
     <p class="text-lg md:text-2xl mb-8 animate-fade-in animate-delay-200">Empowering Minds, Shaping Futures in Bhopal</p>
     <div class="flex justify-center gap-4 animate-fade-in animate-delay-400">
-      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-white text-fuchsia-700 rounded-full font-semibold hover:bg-gray-100">Explore Courses</a>
-      <a href="#contact" class="px-6 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-fuchsia-700">Contact Us</a>
+      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-white text-[var(--brand)] rounded-full font-semibold hover:bg-gray-100">Explore Courses</a>
+      <a href="#contact" class="px-6 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-[var(--brand)]">Contact Us</a>
     </div>
   </div>
 </section>
@@ -104,63 +101,63 @@
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
 
     <div class="animate-fade-in">
-      <h2 class="text-3xl font-bold text-fuchsia-700 mb-4">About Our Institute</h2>
+      <h2 class="text-3xl font-bold text-[var(--brand)] mb-4">About Our Institute</h2>
       <p class="text-gray-700 mb-4">Vidya Sagar Institute, established in 1995, has been a beacon of quality education in Bhopal.</p>
       <p class="text-gray-700 mb-6">State-of-the-art campus, experienced faculty, and innovative learning methods.</p>
 
       <div class="flex gap-6">
         <div class="flex items-center gap-2">
-          <div class="w-10 h-10 bg-fuchsia-100 flex items-center justify-center rounded-full"><i data-feather="award" class="text-fuchsia-600"></i></div>
+          <div class="w-10 h-10 bg-[var(--brand)]/10 flex items-center justify-center rounded-full"><i data-feather="award" class="text-[var(--brand)]"></i></div>
           <span class="font-medium">25+ Years</span>
         </div>
         <div class="flex items-center gap-2">
-          <div class="w-10 h-10 bg-fuchsia-100 flex items-center justify-center rounded-full"><i data-feather="users" class="text-fuchsia-600"></i></div>
+          <div class="w-10 h-10 bg-[var(--brand)]/10 flex items-center justify-center rounded-full"><i data-feather="users" class="text-[var(--brand)]"></i></div>
           <span class="font-medium">5000+ Alumni</span>
         </div>
       </div>
     </div>
 
     <div class="animate-fade-in animate-delay-200">
-      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400" class="rounded-xl shadow-xl object-cover w-full h-80" />
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1400" class="rounded-xl shadow-xl object-cover w-full h-80" alt="campus" />
     </div>
 
   </div>
 </section>
 
-<!-- COURSES (unchanged from your version) -->
+<!-- COURSES -->
 <section id="courses" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-fuchsia-700 mb-3">Our Courses</h2>
+    <h2 class="text-3xl font-bold text-center text-[var(--brand)] mb-3">Our Courses</h2>
     <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Programs designed to prepare students for successful careers.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in">
-        <div class="h-48 bg-fuchsia-600 flex items-center justify-center">
+        <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="book" class="w-16 h-16 text-white"></i>
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold text-fuchsia-700 mb-2">Bachelor of Arts</h3>
+          <h3 class="text-xl font-bold text-[var(--brand)] mb-2">Bachelor of Arts</h3>
           <p class="text-gray-600 mb-4">Covers literature, history, and modern social sciences.</p>
         </div>
       </div>
 
       <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-200">
-        <div class="h-48 bg-fuchsia-700 flex items-center justify-center">
+        <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="cpu" class="w-16 h-16 text-white"></i>
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold text-fuchsia-700 mb-2">Bachelor of Science</h3>
+          <h3 class="text-xl font-bold text-[var(--brand)] mb-2">Bachelor of Science</h3>
           <p class="text-gray-600 mb-4">Specializations in PCM with advanced labs.</p>
         </div>
       </div>
 
       <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl overflow-hidden animate-fade-in animate-delay-400">
-        <div class="h-48 bg-fuchsia-800 flex items-center justify-center">
+        <div class="h-48 bg-[var(--brand)] flex items-center justify-center">
           <i data-feather="dollar-sign" class="w-16 h-16 text-white"></i>
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold text-fuchsia-700 mb-2">Bachelor of Commerce</h3>
+          <h3 class="text-xl font-bold text-[var(--brand)] mb-2">Bachelor of Commerce</h3>
           <p class="text-gray-600 mb-4">Includes accounting, finance, and business studies.</p>
         </div>
       </div>
@@ -168,84 +165,84 @@
     </div>
 
     <div class="text-center mt-10">
-      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-fuchsia-600 text-white rounded-full hover:bg-fuchsia-700 inline-flex items-center">View All Courses <i data-feather="arrow-right" class="ml-2"></i></a>
+      <a href="https://apttrialweb.github.io/vim/courses.html" class="px-6 py-3 bg-[var(--brand)] text-white rounded-full hover:bg-[var(--brand)] inline-flex items-center">View All Courses <i data-feather="arrow-right" class="ml-2"></i></a>
     </div>
   </div>
 </section>
 
-  <!-- TESTIMONIALS SECTION -->
-  <section class="py-20 bg-fuchsia-700 text-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold mb-2">What Our Students Say</h2>
-        <p class="max-w-2xl mx-auto opacity-90">Hear from our alumni about their experiences at Vidya Sagar Institute</p>
+<!-- TESTIMONIALS -->
+<section class="py-20 bg-[var(--brand)] text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold mb-2">What Our Students Say</h2>
+      <p class="max-w-2xl mx-auto opacity-90">Hear from our alumni about their experiences at Vidya Sagar Institute</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+        <div class="flex items-center mb-4">
+          <img src="https://images.unsplash.com/photo-1545996124-1f59b5f8c6d1?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <div>
+            <h4 class="font-bold">Rahul Sharma</h4>
+            <p class="text-sm opacity-80">B.Sc Physics, 2019</p>
+          </div>
+        </div>
+        <p class="opacity-90">"The faculty at Vidya Sagar Institute goes above and beyond to ensure students understand concepts thoroughly. The practical lab sessions were particularly helpful for my career."</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
-          <div class="flex items-center mb-4">
-            <img src="https://images.unsplash.com/photo-1545996124-1f59b5f8c6d1?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
-            <div>
-              <h4 class="font-bold">Rahul Sharma</h4>
-              <p class="text-sm opacity-80">B.Sc Physics, 2019</p>
-            </div>
+      <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+        <div class="flex items-center mb-4">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <div>
+            <h4 class="font-bold">Priya Patel</h4>
+            <p class="text-sm opacity-80">B.Com, 2020</p>
           </div>
-          <p class="opacity-90">"The faculty at Vidya Sagar Institute goes above and beyond to ensure students understand concepts thoroughly. The practical lab sessions were particularly helpful for my career."</p>
         </div>
+        <p class="opacity-90">"The commerce program provided excellent industry exposure through guest lectures and workshops. I secured my first job through campus placements."</p>
+      </div>
 
-        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
-          <div class="flex items-center mb-4">
-            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
-            <div>
-              <h4 class="font-bold">Priya Patel</h4>
-              <p class="text-sm opacity-80">B.Com, 2020</p>
-            </div>
+      <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+        <div class="flex items-center mb-4">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <div>
+            <h4 class="font-bold">Amit Verma</h4>
+            <p class="text-sm opacity-80">B.A English, 2018</p>
           </div>
-          <p class="opacity-90">"The commerce program provided excellent industry exposure through guest lectures and workshops. I secured my first job through campus placements."</p>
         </div>
-
-        <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
-          <div class="flex items-center mb-4">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200" alt="Student" class="w-12 h-12 rounded-full mr-4 object-cover">
-            <div>
-              <h4 class="font-bold">Amit Verma</h4>
-              <p class="text-sm opacity-80">B.A English, 2018</p>
-            </div>
-          </div>
-          <p class="opacity-90">"The liberal arts environment encouraged critical thinking and creativity. The library resources were exceptional for research projects."</p>
-        </div>
+        <p class="opacity-90">"The liberal arts environment encouraged critical thinking and creativity. The library resources were exceptional for research projects."</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT SECTION -->
+<!-- CONTACT -->
 <section id="contact" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
     <div>
-      <h2 class="text-3xl font-bold text-fuchsia-700 mb-4">Contact Us</h2>
+      <h2 class="text-3xl font-bold text-[var(--brand)] mb-4">Contact Us</h2>
       <p class="text-gray-600 mb-6">We’re here to help! Reach out anytime.</p>
 
       <div class="space-y-6">
         <div class="flex gap-4 items-start">
-          <div class="w-12 h-12 bg-fuchsia-100 rounded-full flex items-center justify-center"><i data-feather="map-pin" class="text-fuchsia-600"></i></div>
+          <div class="w-12 h-12 bg-[var(--brand)]/10 rounded-full flex items-center justify-center"><i data-feather="map-pin" class="text-[var(--brand)]"></i></div>
           <p class="text-gray-700">123 Education Nagar, Bhopal, MP 462001</p>
         </div>
 
         <div class="flex gap-4 items-start">
-          <div class="w-12 h-12 bg-fuchsia-100 rounded-full flex items-center justify-center"><i data-feather="mail" class="text-fuchsia-600"></i></div>
+          <div class="w-12 h-12 bg-[var(--brand)]/10 rounded-full flex items-center justify-center"><i data-feather="mail" class="text-[var(--brand)]"></i></div>
           <p class="text-gray-700">info@vidyasagar.edu.in</p>
         </div>
 
         <div class="flex gap-4 items-start">
-          <div class="w-12 h-12 bg-fuchsia-100 rounded-full flex items-center justify-center"><i data-feather="phone" class="text-fuchsia-600"></i></div>
+          <div class="w-12 h-12 bg-[var(--brand)]/10 rounded-full flex items-center justify-center"><i data-feather="phone" class="text-[var(--brand)]"></i></div>
           <p class="text-gray-700">+91 755 1234567</p>
         </div>
       </div>
     </div>
 
     <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
-      <h3 class="text-2xl font-bold text-fuchsia-700 mb-6">Send Us a Message</h3>
+      <h3 class="text-2xl font-bold text-[var(--brand)] mb-6">Send Us a Message</h3>
 
 <!-- New Stylish Form Layout -->
 <form 
@@ -260,30 +257,30 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
       <label class="text-sm font-medium text-gray-700">Full Name</label>
-      <input name="entry.507559150" type="text" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md hover:shadow-fuchsia-400 transition-all duration-300 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 focus:shadow-fuchsia-500" placeholder="Your full name" />
+      <input name="entry.507559150" type="text" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="Your full name" />
     </div>
 
     <div>
       <label class="text-sm font-medium text-gray-700">Email</label>
-      <input name="entry.2139235866" type="email" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md hover:shadow-fuchsia-400 transition-all duration-300 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 focus:shadow-fuchsia-500" placeholder="you@example.com" />
+      <input name="entry.2139235866" type="email" required class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="you@example.com" />
     </div>
   </div>
 
   <!-- Row 2: Phone -->
   <div>
     <label class="text-sm font-medium text-gray-700">Phone</label>
-    <input name="entry.411101092" type="tel" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md hover:shadow-fuchsia-400 transition-all duration-300 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 focus:shadow-fuchsia-500" placeholder="+91 755 ..." />
+    <input name="entry.411101092" type="tel" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="+91 755 ..." />
   </div>
 
   <!-- Row 3: Message -->
   <div>
     <label class="text-sm font-medium text-gray-700">Message</label>
-    <textarea name="entry.811684428" rows="4" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md hover:shadow-fuchsia-400 transition-all duration-300 focus:ring-2 focus:ring-fuchsia-500 focus:border-fuchsia-500 focus:shadow-fuchsia-500" placeholder="How can we help?"></textarea>
+    <textarea name="entry.811684428" rows="4" class="form-input mt-1 w-full px-4 py-3 text-lg rounded-2xl border-gray-300 bg-white shadow-md transition-all duration-300 focus:ring-2 focus:ring-[var(--brand)] focus:border-[var(--brand)]" placeholder="How can we help?"></textarea>
   </div>
 
   <!-- Submit Section -->
   <div class="flex items-center justify-between pt-2">
-    <button type="submit" class="px-6 py-2 bg-fuchsia-600 text-white rounded-full font-medium hover:bg-fuchsia-700 transition-all shadow-md">Send Message</button>
+    <button type="submit" class="px-6 py-2 bg-[var(--brand)] text-white rounded-full font-medium hover:bg-[var(--brand)] transition-all shadow-md">Send Message</button>
     <p class="text-sm text-gray-600">We reply within 24 hours.</p>
   </div>
 </form>
@@ -291,13 +288,12 @@
 <!-- Hidden iframe -->
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-fuchsia-800 text-white py-10 mt-16 text-center">
+<footer class="bg-[var(--brand)] text-white py-10 mt-16 text-center">
   <p>&copy; 2025 Vidya Sagar Institute — All Rights Reserved</p>
 </footer>
 
@@ -307,30 +303,43 @@
     <i data-feather="check-circle" class="w-16 h-16 mx-auto text-green-500"></i>
     <h2 class="text-xl font-semibold mt-4">Message Sent!</h2>
     <p class="text-gray-600 text-sm mt-2">We will contact you shortly.</p>
-    <button onclick="closeSuccessPopup()" class="mt-6 px-5 py-2 bg-fuchsia-600 text-white rounded-full hover:bg-fuchsia-700">Close</button>
+    <button id="closePopupBtn" class="mt-6 px-5 py-2 bg-[var(--brand)] text-white rounded-full hover:bg-[var(--brand)]">Close</button>
   </div>
 </div>
 
 <script>
-feather.replace();
+// Initialize icons safely
+window.addEventListener('DOMContentLoaded', () => {
+  try { feather.replace(); } catch (e) { /* ignore */ }
 
-document.getElementById('navToggle').onclick = () => {
-  document.getElementById('mobileMenu').classList.toggle('hidden');
-};
+  // Mobile nav toggle (if navToggle exists) - guarded
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    });
+  }
 
-document.getElementById('contactForm').addEventListener('submit', () => {
-  setTimeout(() => {
-    showSuccessPopup();
-    document.getElementById('contactForm').reset();
-  }, 800);
+  // Contact form handling with safety checks
+  const form = document.getElementById('contactForm');
+  const successPopup = document.getElementById('successPopup');
+  const closeBtn = document.getElementById('closePopupBtn');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      // let the form submit to Google Forms via the iframe; show popup after a short delay
+      setTimeout(() => {
+        if (successPopup) successPopup.classList.remove('hidden');
+        form.reset();
+      }, 800);
+    });
+  }
+
+  if (closeBtn && successPopup) {
+    closeBtn.addEventListener('click', () => successPopup.classList.add('hidden'));
+  }
 });
-
-function showSuccessPopup() {
-  document.getElementById('successPopup').classList.remove('hidden');
-}
-function closeSuccessPopup() {
-  document.getElementById('successPopup').classList.add('hidden');
-}
 </script>
 
 </body>
