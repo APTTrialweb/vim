@@ -73,6 +73,56 @@
   </div>
 </section>
 
+<!-- UPCOMING ACTIVITIES -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold text-[var(--brand)] mb-10">Upcoming Activities</h2>
+
+    <div id="upcomingSlider" class="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl shadow-xl bg-gray-100 touch-pan-y cursor-pointer">
+      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://source.unsplash.com/800x1100/?event,poster" />
+      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://source.unsplash.com/800x1100/?education,poster" />
+      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://source.unsplash.com/800x1100/?announcement,poster" />
+    </div>
+  </div>
+</section>
+
+<script>
+// Upcoming Posters Auto Slider + Swipe + Fullscreen
+let upIndex = 0;
+const upSlides = document.querySelectorAll('.up-slide');
+function showUpSlide() {
+  upSlides.forEach(s => s.classList.add('hidden'));
+  upSlides[upIndex].classList.remove('hidden');
+  upIndex = (upIndex + 1) % upSlides.length;
+}
+showUpSlide();
+let upInterval = setInterval(showUpSlide, 4000);
+
+// Swipe
+let upStartX = 0;
+let upEndX = 0;
+const upSlider = document.getElementById('upcomingSlider');
+upSlider.addEventListener('touchstart', e => { upStartX = e.touches[0].clientX; clearInterval(upInterval); });
+upSlider.addEventListener('touchmove', e => { upEndX = e.touches[0].clientX; });
+upSlider.addEventListener('touchend', () => {
+  const diff = upStartX - upEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) showUpSlide(); else { upIndex = (upIndex - 2 + upSlides.length) % upSlides.length; showUpSlide(); }
+  }
+  upInterval = setInterval(showUpSlide, 4000);
+});
+
+// Fullscreen Popup
+upSlider.addEventListener('click', () => {
+  const imgSrc = upSlides[(upIndex - 1 + upSlides.length) % upSlides.length].src;
+  const fs = document.createElement('div');
+  fs.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-[999999]';
+  fs.innerHTML = `<img src="${imgSrc}" class='max-h-[90vh] max-w-[90vw] object-contain rounded-xl' />`;
+  fs.addEventListener('click', () => fs.remove());
+  document.body.appendChild(fs);
+});
+</script>
+
 <!-- ABOUT -->
 <section id="about" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
@@ -105,23 +155,23 @@
 
     <div id="activitySlider" class="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl touch-pan-y">
       <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
-        <img src="https://vidyapramangurukulam.org/wp-content/uploads/2025/10/4.jpg" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <img src="https://source.unsplash.com/600x400/?education,classroom" class="rounded-xl mb-4 w-full h-64 object-cover" />
         <p class="text-sm opacity-90">Classroom learning in progress</p>
       </div>
       <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
-        <img src="https://github.com/APTTrialweb/vim/blob/main/Garba%20VIM.jpeg?raw=true" class="rounded-xl mb-4 w-full h-64 object-cover" />
-        <p class="text-sm opacity-90">Special Garba Event</p>
+        <img src="https://source.unsplash.com/600x400/?students,learning" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Students participating in activities</p>
       </div>
       <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
-        <img src="https://vidyapramangurukulam.org/wp-content/uploads/2025/10/2.jpg" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <img src="https://source.unsplash.com/600x400/?college,event" class="rounded-xl mb-4 w-full h-64 object-cover" />
         <p class="text-sm opacity-90">Campus event highlights</p>
       </div>
       <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
-        <img src="https://vidyasagarbhopal.in/wp-content/uploads/2025/09/DSC06209-scaled-e1763382568289.jpg" />
-        <p class="text-sm opacity-90">Industry Expert Sessions</p>
+        <img src="https://source.unsplash.com/600x400/?lecture,hall" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <p class="text-sm opacity-90">Lecture session</p>
       </div>
       <div class="slide bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg hidden">
-        <img src="https://github.com/APTTrialweb/vim/blob/main/VIM%20Cmapus%20Photo.jpeg?raw=true" class="rounded-xl mb-4 w-full h-64 object-cover" />
+        <img src="https://source.unsplash.com/600x400/?students,project" class="rounded-xl mb-4 w-full h-64 object-cover" />
         <p class="text-sm opacity-90">Student group project</p>
       </div>
     </div>
@@ -279,7 +329,7 @@ slider.addEventListener('touchend', () => {
           <i data-feather="dollar-sign" class="w-16 h-16 text-white"></i>
         </div>
         <div class="p-6">
-          <h3 class="text-xl font-bold text-[var(--brand)] mb-2"><a href="mba.html" class="hover:underline">MBA in Financial Services By APT</a></h3>
+          <h3 class="text-xl font-bold text-[var(--brand)] mb-2"><a href="mba.html" class="hover:underline">MBA</a></h3>
           <p class="text-gray-600 mb-4">Includes accounting, finance, and business studies.</p>
         </div>
       </div>
@@ -296,16 +346,16 @@ slider.addEventListener('touchend', () => {
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-8">
       <h2 class="text-3xl font-bold mb-2">What Our Students Say</h2>
-      <p class="max-w-2xl mx-auto opacity-90">Hear from our students about their experiences at Vidya Sagar Institute</p>
+      <p class="max-w-2xl mx-auto opacity-90">Hear from our alumni about their experiences at Vidya Sagar Institute</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://github.com/APTTrialweb/vim/blob/main/Nancy%20Namdeo.png?raw=true" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1545996124-1f59b5f8c6d1?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
-            <h4 class="font-bold">Nancy Namdeo</h4>
-            <p class="text-sm opacity-80">APT's MBA Program Student</p>
+            <h4 class="font-bold">Rahul Sharma</h4>
+            <p class="text-sm opacity-80">B.Sc Physics, 2019</p>
           </div>
         </div>
         <p class="opacity-90">"The faculty at Vidya Sagar Institute goes above and beyond to ensure students understand concepts thoroughly."</p>
@@ -313,10 +363,10 @@ slider.addEventListener('touchend', () => {
 
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://github.com/APTTrialweb/vim/blob/main/Archit%20Jain.png?raw=true" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
-            <h4 class="font-bold">Archit Jain</h4>
-            <p class="text-sm opacity-80">APT's MBA Program Student</p>
+            <h4 class="font-bold">Priya Patel</h4>
+            <p class="text-sm opacity-80">B.Com, 2020</p>
           </div>
         </div>
         <p class="opacity-90">"The commerce program provided excellent industry exposure. I secured my first job through campus placements."</p>
@@ -324,10 +374,10 @@ slider.addEventListener('touchend', () => {
 
       <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
         <div class="flex items-center mb-4">
-          <img src="https://github.com/APTTrialweb/vim/blob/main/Saurabh%20Verma.png?raw=true" class="w-12 h-12 rounded-full mr-4 object-cover">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200" class="w-12 h-12 rounded-full mr-4 object-cover">
           <div>
-            <h4 class="font-bold">Saurabh Verma</h4>
-            <p class="text-sm opacity-80">APT's MBA Program Student</p>
+            <h4 class="font-bold">Amit Verma</h4>
+            <p class="text-sm opacity-80">B.A English, 2018</p>
           </div>
         </div>
         <p class="opacity-90">"The liberal arts environment encouraged critical thinking and creativity."</p>
@@ -343,7 +393,7 @@ slider.addEventListener('touchend', () => {
     <p class="text-gray-600 mb-6">Take a quick look at our institute environment</p>
     <div class="rounded-2xl overflow-hidden shadow-xl">
       <video autoplay muted loop class="w-full h-80 object-cover">
-        <source src="https://youtu.be/EngW7tLk6R8" type="video/mp4" />
+        <source src="https://cdn.pixabay.com/vimeo/458857393/campustour.mp4?width=1280&hash=example" type="video/mp4" />
       </video>
     </div>
   </div>
