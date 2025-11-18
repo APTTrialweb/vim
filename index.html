@@ -75,16 +75,79 @@
 
 <!-- UPCOMING ACTIVITIES -->
 <section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold text-[var(--brand)] mb-10">Important Announcements and Upcoming Events</h2>
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-[var(--brand)] mb-10 text-center">Important Announcements and Upcoming Events</h2>
 
-    <div id="upcomingSlider" class="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl shadow-xl bg-gray-100 touch-pan-y cursor-pointer">
-      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2016.00.35_22a7122b.jpg?raw=true" />
-      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/MBA%20Students%20Placed.png?raw=true" />
-      <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/MBA%20VIM%20Banner.png?raw=true" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- LEFT: POSTER SLIDER -->
+      <div id="upcomingSlider" class="relative w-full max-w-lg mx-auto overflow-hidden rounded-2xl shadow-xl bg-gray-100 touch-pan-y cursor-pointer">
+        <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2016.00.35_22a7122b.jpg?raw=true" />
+        <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/MBA%20Students%20Placed.png?raw=true" />
+        <img class="up-slide w-full h-[550px] object-contain bg-white p-4 hidden" src="https://github.com/APTTrialweb/vim/blob/main/MBA%20VIM%20Banner.png?raw=true" />
+      </div>
+
+      <!-- RIGHT: ANNOUNCEMENT MARQUEE -->
+      <div class="bg-gray-100 rounded-2xl shadow-xl p-6 h-[550px] overflow-hidden">
+        <h3 class="text-2xl font-bold text-[var(--brand)] mb-4 text-center">Announcements</h3>
+
+        <div id="announcementBox" class="relative h-full overflow-hidden">
+          <div id="announcementList" class="space-y-6 animate-scroll-up">
+
+            <!-- COPY 1 -->
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 18 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">New MBA FS Batch Starts – Apply Now</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 21 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Industrial Visit Registration Open</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 25 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Scholarship Test – Last Date to Register</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 30 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Campus Recruitment Drive – Infosys</a>
+            </div>
+
+            <!-- COPY 2 FOR INFINITE LOOP -->
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 18 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">New MBA FS Batch Starts – Apply Now</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 21 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Industrial Visit Registration Open</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 25 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Scholarship Test – Last Date to Register</a>
+            </div>
+            <div class="p-4 bg-white rounded-xl shadow cursor-pointer hover:bg-gray-50">
+              <p class="text-sm text-gray-500">📅 30 Nov 2025</p>
+              <a href="#" class="text-[var(--brand)] font-semibold hover:underline">Campus Recruitment Drive – Infosys</a>
+            </div>
+
+          </div>
+        </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+@keyframes scroll-up {
+ 0% { transform: translateY(0); }
+ 100% { transform: translateY(-100%); }
+}
+.animate-scroll-up {
+  animation: scroll-up 18s linear infinite;
+}
+</style>
 
 <script>
 // Upcoming Posters Auto Slider + Swipe + Fullscreen
@@ -615,6 +678,59 @@ counters.forEach(counter=>{
   };
   update();
 });
+</script>
+
+
+<!-- CUSTOM CURSOR (desktop only) -->
+<style>
+.custom-cursor{position:fixed;top:0;left:0;pointer-events:none;z-index:999999;mix-blend-mode:normal;}
+.custom-cursor .cursor-ring{position:absolute;top:0;left:0;width:36px;height:36px;border-radius:50%;border:2px solid var(--brand);transform:translate(-50%,-50%);transition:transform .15s ease,opacity .15s;opacity:.9}
+.custom-cursor .cursor-dot{position:absolute;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--brand);transform:translate(-50%,-50%);transition:transform .12s ease,opacity .12s}
+.custom-cursor.cursor-hover .cursor-ring{transform:translate(-50%,-50%) scale(1.6);opacity:1}
+.custom-cursor.cursor-active .cursor-ring{transform:translate(-50%,-50%) scale(0.9);opacity:0.8}
+.custom-cursor.cursor-active .cursor-dot{transform:translate(-50%,-50%) scale(0.6);opacity:0.9}
+/* hide on touch devices */
+@media (hover: none), (pointer: coarse) { .custom-cursor{display:none!important} }
+</style>
+
+<script>
+(function(){
+  // Only enable on devices with fine pointer (desktop / trackpad / mouse)
+  if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  cursor.innerHTML = "<div class=\"cursor-ring\"></div><div class=\"cursor-dot\"></div>";
+  document.body.appendChild(cursor);
+
+  const ring = cursor.querySelector('.cursor-ring');
+  const dot = cursor.querySelector('.cursor-dot');
+
+  let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+  let ringX = mouseX, ringY = mouseY;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    // move ring with slight delay for subtle lag
+    ring.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  // click animations
+  document.addEventListener('mousedown', () => cursor.classList.add('cursor-active'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('cursor-active'));
+
+  // hover on interactive elements
+  const hoverTargets = 'a, button, input, textarea, .course-card, .slide, .up-slide';
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+  });
+
+  // ensure cursor hides when leaving window
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+})();
 </script>
 
 </body>
