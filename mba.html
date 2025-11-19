@@ -9,8 +9,16 @@
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <style>
+    @keyframes runningGlow {
+      0% { box-shadow: 0 0 5px #fff, 0 0 10px #203063; }
+      50% { box-shadow: 0 0 15px #fff, 0 0 25px #203063; }
+      100% { box-shadow: 0 0 5px #fff, 0 0 10px #203063; }
+    }
+    .glow-border {
+      animation: runningGlow 2s linear infinite;
+    }
     body { font-family: 'Poppins', sans-serif; }
-    .hero-grad { background: linear-gradient(90deg, #7c2ae8, #581c87); }
+    .hero-grad { background: linear-gradient(90deg, #203063, #203063); }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -19,15 +27,15 @@
   <header class="bg-white shadow-sm sticky top-0 z-30">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-white font-bold">VS</div>
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#203063] to-[#203063] flex items-center justify-center text-white font-bold">VS</div>
         <a href="index.html" class="text-lg font-semibold text-gray-800">Vidya Sagar Institute</a>
       </div>
 
       <nav class="hidden md:flex items-center gap-6 text-gray-700">
-        <a href="index.html#about" class="hover:text-purple-700">About</a>
-        <a href="index.html#courses" class="hover:text-purple-700">Courses</a>
-        <a href="index.html#contact" class="hover:text-purple-700">Contact</a>
-        <a href="#apply" class="px-4 py-2 bg-purple-600 text-white rounded-full">Apply Now</a>
+        <a href="index.html#about" class="hover:text-[#203063]">About</a>
+        <a href="index.html#courses" class="hover:text-[#203063]">Courses</a>
+        <a href="index.html#contact" class="hover:text-[#203063]">Contact</a>
+        <a href="#apply" class="px-4 py-2 bg-[#203063] text-white rounded-full">Apply Now</a>
       </nav>
 
       <button id="navToggle" class="md:hidden p-2 rounded-md">
@@ -40,7 +48,7 @@
         <a href="index.html#about">About</a>
         <a href="index.html#courses">Courses</a>
         <a href="index.html#contact">Contact</a>
-        <a href="#apply" class="bg-purple-600 text-white px-4 py-2 rounded-full text-center">Apply Now</a>
+        <a href="#apply" class="bg-[#203063] text-white px-4 py-2 rounded-full text-center">Apply Now</a>
       </div>
     </div>
   </header>
@@ -53,7 +61,7 @@
 
   <!-- COURSE OVERVIEW -->
   <section class="py-16 max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-purple-700 mb-6">Course Overview</h2>
+    <h2 class="text-3xl font-bold text-[#203063] mb-6">Course Overview</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
@@ -74,8 +82,8 @@
       </div>
 
       <!-- RIGHT: POSTER SPACE -->
-      <div class="w-full h-80 bg-gray-200 rounded-xl shadow flex items-center justify-center overflow-hidden">
-        <img src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2016.00.35_22a7122b.jpg?raw=true" alt="MBA Poster" class="w-full h-full object-cover" id="mbaPoster" />
+      <div class="w-full max-w-sm aspect-[3/4] bg-gray-200 rounded-xl border border-gray-300 glow-border flex items-center justify-center overflow-hidden mx-auto">
+        <img src="https://github.com/APTTrialweb/vim/blob/main/WhatsApp%20Image%202025-11-17%20at%2016.00.35_22a7122b.jpg?raw=true" alt="MBA Poster" class="w-full h-full object-contain" id="mbaPoster" />
       </div>
 
     </div>
@@ -84,7 +92,7 @@
   <!-- SPECIALIZATIONS -->
   <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-purple-700 mb-6">Specializations Offered</h2>
+      <h2 class="text-3xl font-bold text-[#203063] mb-6">Specializations Offered</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="p-6 bg-gray-50 rounded-xl shadow">
@@ -115,7 +123,7 @@
   <section id="apply" class="py-20 text-center bg-purple-700 text-white">
     <h2 class="text-3xl font-bold mb-4">Apply for MBA</h2>
     <p class="opacity-90 mb-6 max-w-xl mx-auto">Make your management dreams a reality with Vidya Sagar Institute.</p>
-    <a href="index.html#contact" class="px-8 py-3 bg-white text-purple-700 font-semibold rounded-full">Contact for Admission</a>
+    <a href="index.html#contact" class="px-8 py-3 bg-white text-[#203063] font-semibold rounded-full">Contact for Admission</a>
   </section>
 
   <!-- FOOTER -->
